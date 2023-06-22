@@ -1,0 +1,17 @@
+<?php
+session_start();
+if(isset($_SESSION["id"])){
+    echo $_SESSION["id"];
+}
+$id=$_SESSION["id"];
+$server='Localhost:3306';
+$user='root';
+$password='';
+$database='SFdb';
+$conc=new mysqli($server,$user,$password,$database);
+$display=mysqli_query($conc,"SELECT * FROM user_log WHERE Email_id='$id'");
+while($db_row=mysqli_fetch_array($display)){
+    echo $db_row["Name"];
+    echo $db_row["Contact_No"];
+}
+?>
